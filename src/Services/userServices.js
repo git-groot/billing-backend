@@ -2,7 +2,7 @@
 import user from "../models/user.js";
 import { Create, GetAllWithFilter } from "../Controller/commonController.js";
 
-export const UserCreate = async (req, res) => {
+const UserCreate = async (req, res) => {
 
     try {
         const newUser = await Create(req, req, user)
@@ -15,7 +15,7 @@ export const UserCreate = async (req, res) => {
         return res.status(500).json(error)
     }
 };
-export const UserFilter = async (req, res) => {
+const UserFilter = async (req, res) => {
     try {
         const users = await GetAllWithFilter(req, res, user)
         if (!users) {
@@ -26,4 +26,6 @@ export const UserFilter = async (req, res) => {
     } catch (error) {
         return res.status(500).json(error)
     }
-};  
+};
+
+export default { UserCreate, UserFilter }

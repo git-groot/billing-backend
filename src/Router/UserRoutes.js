@@ -4,13 +4,16 @@
 
 import express from 'express';
 import { login, register } from '../Services/auth.js';
-const Router = express.Router();
+const router = express.Router();
+import UserServices from '../Services/userServices.js';
 
-Router.get("/", (req, res) => {
-  res.json({ ok: true, message: "User 12Routes" });
+router.get("/", (req, res) => {
+  res.json({ ok: true, message: "User Routes" });
 });
 
-Router.post("/register", register);
-Router.post("/login", login);
+router.post("/register", register);
+router.post("/login", login);
+router.post("/createUser", UserServices.UserCreate);
+router.get("/getAllUsers", UserServices.UserFilter);
 
-export default Router;
+export default router;
